@@ -76,6 +76,7 @@ public class Driver {
         Paging paging = new Paging(1, 100);
         java.util.List<Status> statuses = null;
         try {
+
             statuses = twitter.getUserTimeline("GOONS_TXT",paging);
         } catch (TwitterException e) {
             e.printStackTrace();
