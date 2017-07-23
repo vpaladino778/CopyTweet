@@ -30,7 +30,7 @@ public class TweetHandler {
         }
     }
 
-    public void linkTwitter(){
+    private void linkTwitter(){
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
                 .setOAuthConsumerKey("OAUTH_CONSUMER_KEY")
