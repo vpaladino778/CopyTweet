@@ -14,7 +14,7 @@ public class TweetKeyListener implements GlobalKeyListener {
     public TweetKeyListener(){
         super();
         copyKeyCode = 45; //Default key is insert
-        userName = "GOON_TXT";
+        userName = "GOONS_TXT";
 
         tweetHandler = new TweetHandler(userName);
     }
@@ -22,12 +22,13 @@ public class TweetKeyListener implements GlobalKeyListener {
 
     @Override
     public void keyPressed(GlobalKeyEvent globalKeyEvent) {
+        System.out.println(globalKeyEvent);
 
     }
 
     @Override
     public void keyReleased(GlobalKeyEvent globalKeyEvent) {
-
+        System.out.println(globalKeyEvent);
             if(globalKeyEvent.getVirtualKeyCode() == copyKeyCode){
                 Utilities.putClipboard(tweetHandler.getRandomTweet());
             }
