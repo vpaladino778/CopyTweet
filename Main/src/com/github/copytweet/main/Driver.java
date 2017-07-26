@@ -3,6 +3,7 @@ package com.github.copytweet.main;
 import com.github.copytweet.keylistener.TweetKeyListener;
 import lc.kra.system.keyboard.GlobalKeyboardHook;
 
+import static javafx.application.Application.launch;
 
 
 public class Driver {
@@ -12,6 +13,7 @@ public class Driver {
     private static boolean run = true;
 
     public static void main(String[] args){
+        launch(args);
         GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true); // use false here to switch to hook instead of raw input
         keyboardHook.addKeyListener(new TweetKeyListener());
         try{

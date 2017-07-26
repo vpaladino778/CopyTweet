@@ -18,16 +18,8 @@ public class TweetHandler {
     private Twitter twitter;
 
     public TweetHandler(String username){
-        twitterUser = username;
         tweets = new ArrayList<>();
-        linkTwitter();
-
-        try{
-            populateTweets();
-        } catch (TwitterException e) {
-            e.printStackTrace();
-            //Twitter authentication failed
-        }
+        changeUser(username);
     }
 
     private void linkTwitter(){
@@ -42,7 +34,7 @@ public class TweetHandler {
         twitter = tf.getInstance();
     }
 
-    private void populateTweets() throws TwitterException {
+    private void populateTweets(String user) throws TwitterException {
         int pageNum = 1;
         int size;
         boolean notDone = true;
@@ -50,7 +42,7 @@ public class TweetHandler {
         while(notDone) {
             size = tweets.size();
             Paging page = new Paging(pageNum, 100);
-            tweets.addAll(twitter.getUserTimeline(twitterUser, page));
+            tweets.addAll(twitter.getUserTimeline(user, page));
             if (tweets.size() == size) {
                 notDone = false;
             }
@@ -60,5 +52,17 @@ public class TweetHandler {
     public String getRandomTweet(){
         int randIndex = (int)(tweets.size() * Math.random());
         return tweets.get(randIndex).getText();
+    }
+
+    public boolean changeUser(String user){
+        linkTwitter();
+        try {
+            populateTweets(user);
+        } catch (TwitterException e) {
+            e.printStackTrace();
+            return false;
+        }
+        twitterUser = user;
+        return true;
     }
 }
