@@ -33,10 +33,10 @@ public class SettingsGUI extends Application {
     private static boolean run = true;
 
     public static void main(String[] args){
-        launch(args);
         GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true); // use false here to switch to hook instead of raw input
         keyboardHook.addKeyListener(new TweetKeyListener());
         try{
+            launch(args);
             while (run) Thread.sleep(128);
         } catch(InterruptedException e)
         { }
