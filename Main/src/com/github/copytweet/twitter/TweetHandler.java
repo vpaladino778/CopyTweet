@@ -65,7 +65,11 @@ public class TweetHandler {
         return tweetList.get(randIndex);
     }
 
-
+    /**
+     * Used to changed the twitter account that we are retrieving tweets from
+     * @param user Twitter user to retrieve tweets from
+     * @return Returns true if user exists
+     */
     public boolean changeUser(String user){
         linkTwitter();
         File saveDirectory = new File("Tweets");
@@ -88,11 +92,9 @@ public class TweetHandler {
     }
 
     /**
-     *
-     * @param file The file to be parsed
+     * @param file The file to be loaded
      * @return  True is the file was successfully parsed and saved
      */
-
     private boolean loadTweets(File file){
 
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){

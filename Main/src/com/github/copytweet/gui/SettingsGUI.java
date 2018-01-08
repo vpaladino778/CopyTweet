@@ -2,6 +2,8 @@ package com.github.copytweet.gui;
 
 import com.github.copytweet.keylistener.TweetKeyListener;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,13 +23,26 @@ public class SettingsGUI extends Application {
         twitterName = new TextField();
         verifyButton = new Button("Verify");
         nameBox = new HBox(twitterName,verifyButton);
+        nameBox.setId("NameBox");
+        Scene settingsScene = new Scene(nameBox, 210, 200);
+        settingsScene.getStylesheets().add("guiStyle.css");
 
-        Scene settingsScene = new Scene(nameBox, 200, 200);
+        initializeListeners();
 
         primaryStage.setScene(settingsScene);
         primaryStage.show();
 
 
+    }
+
+    private void initializeListeners() {
+        verifyButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String userName = twitterName.getText();
+
+            }
+        });
     }
 
     private static boolean run = true;
